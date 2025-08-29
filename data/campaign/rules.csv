@@ -10,9 +10,8 @@ AddText ""You make your way inside a bar when suddenly you are approached by a w
 aotdSophiaDontTalk:Don't follow",
 aotdSophiaTalk,DialogOptionSelected,$option == aotdSophiaTalk,"SaveCurrentVisual
 BeginConversation aotd_sophia 
-$global.aotd_sophia",Both of you sit in the bar ordering a small glass of fine booze. After a moment you hear that her name is Sophia and she is one of researchers from Galatia as you guessed it earlier. ‚ÄúI have heard stories about technological advancements of your faction and  I have come with a proposition for you‚Äù,aotdSophiaListen: Listen to proposition,
-aotdSophiaListen,DialogOptionSelected,$option == aotdSophiaListen,,"So getting to the point, I am a seeker of knowledge, Galatia limits me with regulations, but you? You pursue knowledge without any bounds and I want to be part of it . So my question is will you allow my humble person to help you in that matter?
-","aotdSophiaAgree:Accept Propostion 
+$global.aotd_sophia","Both of you sit at the bar and order a small glass of fine booze. After a moment you hear that her name is Sophia and that she is one of researchers from Galatia as you guessed earlier. ""I have heard stories about the technological advancements of your faction and I have come with a proposition for you...""",aotdSophiaListen: Listen to her Proposition,
+aotdSophiaListen,DialogOptionSelected,$option == aotdSophiaListen,,"So, getting to the point, I am a seeker of knowledge, Galatia limits me with regulations, but you? You pursue knowledge without any bounds and I want to be part of it . So my question is: Will you allow my humble person to help you in that matter?","aotdSophiaAgree:Accept Propostion 
 aotdSophiaInfo:See her skills
 aotdReturn:Decline ,and leave the bar",
 aotdSophiaAgree,DialogOptionSelected,$option == aotdSophiaAgree,"SophiaAgreed  
@@ -44,12 +43,12 @@ $global.aotd_can_sophia=false",,,
 ,,,,,,
 ,,,,,,
 #BIFROST SECTION,,,,,,
-bifrostPrintReciver,bifrostCanBeUsed,$connected==true,,"Due to connecton with Hypershunt, this gate is charged with energy of star, allowing cooldown to be lowered to levels, that it basically becomes non-existing.",,
+bifrostPrintReciver,bifrostCanBeUsed,$connected==true,,"Due to an active connection with a Hypershunt, this gate is charged with the energy of a star, overclocking its processors, and reducing its cooldown to near-zero.",,
 bifrostAccess,OpenInteractionDialog,$customType == bifrost_gate score:1000,"SetShortcut defaultLeave ESCAPE  
 SetEnabled bifrostUse false
-FireAll bifrostCanBeUsed","A dull hum begins to sound in your ear, emanating from the gate as space-time begins to rumble and roil. The dull interior of the gigantic ring slowly lightens, unnatural purple light drifting inwards even as the humming begins to rise in tempo, rising a roar. Waves and distortions, barely visible from a distance echo from the structure, sensor reports streaming in about conflicting celestial objects, before it reaches a crescendo, in a tide, space normalizes and a tunnel in reality itself completes forming, giving a complete glimpse to the other side.
+FireAll bifrostCanBeUsed","A dull hum begins to sound in your ear, emanating from the gate as space-time begins to rumble and roil. The dull interior of the gigantic ring slowly lightens, unnatural purple light drifting inwards even as the humming begins to rise in tempo, becoming a deafening roar. Waves and distortions, barely visible from a distance echo from the structure, sensor reports streaming in about conflicting celestial objects, before reaching a crescendo, in a tide, space normalizes and a tunnel in reality itself completes forming, giving a complete glimpse to the other side.
 
-The Bifrost bridge has opened‚Ä¶","0:bifrostUse:Use Bifrost Network
+The Bifrost bridge has openedÅEÄ¶","0:bifrostUse:Use Bifrost Network
 1:defaultLeave:Leave",
 bifrostUse,DialogOptionSelected,$option == bifrostUse,BiFrostCMD selectDestination,,,
 bifrostCanBeUsed,bifrostCanBeUsed,"$used==false
@@ -61,7 +60,7 @@ ShowDefaultVisual
 FireBest SalvageCheckHostile","Your $shipOrFleet approaches $entityName.
 
 The sensors are having a hard time evaluating the tenuous megastructure enveloping its entire surface. Your sensors officer takes the initiative and applies some exotic parameters to the interferometer feed; inputs go green and a few seconds later the sub-AI tentatively identifies a stable planetary-scale energy field with highly unusual properties.",,
-veil_defenderDesc,TriggerAutomatedDefenses,$aotd_quest_veil score:1000,SalvageDefenderInteraction,"As your fleet moves in closer, sensors detect multiple contacts rising up from the depths of the planet",,
+veil_defenderDesc,TriggerAutomatedDefenses,$aotd_quest_veil score:1000,SalvageDefenderInteraction,"As your fleet moves in closer, sensors detect multiple contacts rising up from within the depths of the planet.",,
 veil_continueAfterDefeating,BeatDefendersContinue,$aotd_quest_veil score:1000,,Your fleet finishes its approach to $entityName without further incident.,0:salBeatDefendersContinue:Continue,
 veil_beatDefenders,BeginSalvage,$aotd_quest_veil score:1000,SetShortcut defaultLeave ESCAPE,The transmission is set on repeat and garbled in ways that are indicative of aging equipment. You make out enough to gather that part of a research team was stranded here - at a secret Tri-Tachyon research facility - after the fully automated defenses over-weighed certain executive security contingency orders in the wake of one of the AI Wars and decided it was now imperative to shoot down any craft attempting to leave the planet.,"0:veil_explore:Send a salvage team down to the facility
 100:defaultLeave:Leave",
@@ -114,7 +113,7 @@ $market.mc:pre_collapse_facility
 !$market.aotd_fac_explored
 !$tag:gas_giant
 $market.aotd_failed_pre_collapse","AoTDPCFFailed removeCondition 
-SetShortcut defaultLeave ESCAPE",Unfortuanelty previous fleet have cleared entire planet from all of valuable data. There is nothing left valuable for us ,0:aotd_leave:Leave,
+SetShortcut defaultLeave ESCAPE","Unfortunately, previous fleets have cleared out the entire planet of all of valuable data. There is nothing valuable left for us.",0:aotd_leave:Leave,
 preCollapse_fac_failed2,DialogOptionSelected,$option == aotd_leave,AoTDPCFFailed dismiss,,,
 ,,,,,,
 #Coronal Rework ,,,,,,
@@ -137,7 +136,7 @@ aotd_megastructure_info_before_claim,DialogOptionSelected,$option == aotd_claim_
 aotd_megastructure_info_claim,DialogOptionSelected,$option == aotd_claim_megastructure_complete,AoTDMegastructureRules claim,,,
 aotd_coronal_text_override,BeginSalvage,"$customType == coronal_tap score:1000
 $aotd_claimed score:10000
-!$beingRepaired",,This structure is now under our control,100:defaultLeave:Leave,
+!$beingRepaired",,This structure is now under our control.,100:defaultLeave:Leave,
 aotd_hypershunt_reciver_build,Stable_AddBuildOptions,AoTDMegastructureRules researchedReciver,,,25:SL_aotd_hypershunt:Construct a Hypershunt receiver,
 aotd_hypershunt_reciver_print,DialogOptionSelected,$option == SL_aotd_hypershunt,AoTDStableHandler wantToConstruct:aotd_hypershunt_reciver, ,,
 aotd_hypershunt_construct,DialogOptionSelected,$option == SL_aotd_hypershunt_construct,AoTDStableHandler construct:aotd_hypershunt_reciver,,,
@@ -146,7 +145,7 @@ aotd_mega_check,AoTDMegaCheck,,AoTDMegastructureRules researchedTech,,,
 aotd_nida_block_colony,PopulateOptions,"$market.isPlanetConditionMarketOnly
 $market.isSurveyed
 !$market.hasUnexploredRuins
-!AoTDMegastructureRules researchedTech",SetEnabled surveyPerform false,"We can't colonize this world, due to our poor understand of megastructures, we can colonize it after we researched Megastrucutre Analysis.",,
+!AoTDMegastructureRules researchedTech",SetEnabled surveyPerform false,"We can't colonize this place due to our poor understand of megastructures, we can try to colonize again it after we researched Megastructure Analysis.",,
 # Research Databank sell ,,,,,,
 databanks_turnInOption,PopulateOptions,"$isPerson
 ResearchSell personCanAcceptDbs",FireBest DissableDatabankOptionIfNeeded,,"15:databanks_startTurnIn:""I'd like to turn in these databanks that I've acquired...""",
@@ -182,9 +181,3 @@ ShowDefaultVisual
 AoTDPlutoEncounter start
 FireAll AoTDMegaCheck",,"0:aotd_claim_megastructure:Claim megastructure
 1:defaultLeave:Leave",
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
